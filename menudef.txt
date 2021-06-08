@@ -7,16 +7,19 @@ AddOptionMenu "OptionsMenu"
 OptionMenu "dsc_MonstersMenu"
 {
     Title "Monsters Options"
+    StaticText "ALL CHANGES WILL TAKE EFFECT ON NEXT MAP", gold
+	StaticText " "
 
     Slider "Health Multiplier", "dsc_HealthMultiply", 1, 10.0, 1
-    StaticText  "The health a monster start with is moltiplied by the specified value.", gold
+    StaticText  "The health a monster start with", gold
+    StaticText  "is moltiplied by the specified value.", gold
     StaticText 	""
-    Slider "Damage Factor", "dsc_DamageFactor", 0.1, 10.0, 0.1
-    StaticText  "The default damage factor is moltiplied by the specified value.", gold
-    StaticText  "The damage inflicted to the monster is multiplied by the resulting damage factor.", gold
+    Slider "Damage dealt on monster", "dsc_DamageFactor", 0.05, 2.0, 0.05, 2
+    StaticText  "The damage inflicted to the monster", gold
+    StaticText  "is multiplied by the specified value.", gold
     StaticText  ""
-    Slider "Damage Multiply", "dsc_DamageMultiply", 0.1, 10.0, 0.1
-    StaticText  "The default damage multiply is moltiplied by the specified value.", gold
-    StaticText  "The damage a monster deal from their attack is multiplied by the resulting value.", gold
+    Slider "Damage dealt on player", "dsc_DamageMultiply", 0.1, 10.0, 0.1
+    StaticText  "The damage a monster deal from their attack", gold
+    StaticText  "is multiplied by the specified value.", gold
     StaticText  ""
 }
