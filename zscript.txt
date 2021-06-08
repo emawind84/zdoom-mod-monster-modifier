@@ -1,0 +1,27 @@
+version "3.3"
+
+#include "zscript/handler.txt"
+
+class dsc_static
+{
+    static int returnCVar(name c)
+    {
+        cvar cv = CVar.FindCVar(c);
+        if(cv)
+        {
+            return cv.GetInt();
+        }		
+        return 0;
+    }
+
+    static float returnCVarFloat(name c)
+    {
+        cvar cv = CVar.FindCVar(c);
+        if(cv)
+        {
+            return cv.GetFloat();
+        }		
+        return 0;
+    }
+
+}

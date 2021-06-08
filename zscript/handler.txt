@@ -1,0 +1,41 @@
+class monster_Handler : EventHandler
+{
+    override void WorldLoaded(WorldEvent e)
+    {
+    }
+
+    override void WorldThingSpawned(WorldEvent e)
+    {
+        if(e.Thing && e.Thing.bISMONSTER && e.Thing.bCOUNTKILL)
+		{
+            let t = new("monster_BaseController");
+            t.a = e.Thing;
+        }
+    }
+}
+
+class monster_BaseController : Thinker
+{
+    actor a;
+    bool setup;
+    
+    override void PostBeginPlay()
+    {
+        super.PostBeginPlay();
+
+        a.DamageMultiply *= dsc_static.returnCVarFloat('dsc_DamageMultiply');
+        a.DamageFactor *= dsc_static.returnCVarFloat('dsc_DamageFactor');
+        a.Health *= dsc_static.returnCVar('dsc_HealthMultiply');
+        //console.printf("%s: %2.2f|%2.2f|%d", a.GetClassName(), a.DamageMultiply, a.DamageFactor, a.Health);
+    }
+
+    override void Tick()
+    {
+        super.Tick();
+
+        if(a != null && !setup)
+        {
+            setup = true;
+        }
+    }
+}
