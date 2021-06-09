@@ -2,3 +2,5 @@ server float dsc_monsterDamageFactor = 1.0;
 server float dsc_monsterDamageMultiply = 1.0;
 server float dsc_monsterHealthMultiply = 1.0;
 server float dsc_monsterSpeedFactor = 1.0;
+server bool dsc_monsterAlwaysRespawn = false;
+server bool dsc_monsterAllBoss = false;

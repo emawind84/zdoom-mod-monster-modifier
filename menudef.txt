@@ -25,4 +25,10 @@ OptionMenu "dsc_MonstersMenu"
     Slider "Movement speed factor", "dsc_monsterSpeedFactor", 0.1, 5.0, 0.05, 2
     StaticText  "Make monsters faster or slower.", gold
     StaticText  ""
+    Option "Monsters are all boss?", "dsc_monsterAllBoss", "YesNo"
+    StaticText  "Turn every monster into a boss.", gold
+    StaticText  ""
+    Option "Monsters always respawn?", "dsc_monsterAlwaysRespawn", "YesNo"
+    StaticText  "Make monsters respawn like in Nighmare skill level.", gold
+    StaticText  ""
 }
