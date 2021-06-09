@@ -1,3 +1,4 @@
-server float dsc_DamageFactor = 1.0;
-server float dsc_DamageMultiply = 1.0;
-server int dsc_HealthMultiply = 1;
+server float dsc_monsterDamageFactor = 1.0;
+server float dsc_monsterDamageMultiply = 1.0;
+server float dsc_monsterHealthMultiply = 1.0;
+server float dsc_monsterSpeedFactor = 1.0;

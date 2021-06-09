@@ -18,24 +18,49 @@ class monster_BaseController : Thinker
 {
     actor a;
     bool setup;
+    state prevState;
+    int tic; 
+    int eftic;
     
     override void PostBeginPlay()
     {
         super.PostBeginPlay();
 
-        a.DamageMultiply *= dsc_static.returnCVarFloat('dsc_DamageMultiply');
-        a.DamageFactor *= dsc_static.returnCVarFloat('dsc_DamageFactor');
-        a.Health *= dsc_static.returnCVar('dsc_HealthMultiply');
-        //console.printf("%s: %2.2f|%2.2f|%d", a.GetClassName(), a.DamageMultiply, a.DamageFactor, a.Health);
+        dscmonster_InitEffect();
     }
 
     override void Tick()
     {
         super.Tick();
 
-        if(a != null && !setup)
-        {
-            setup = true;
+        if (a) {
+            if (a != null && !setup)
+            {
+                setup = true;
+            }
+
+            if(a && eftic && ++tic == eftic)
+            {
+                dscmonster_TickEffect();
+                tic = 0;
+            }
         }
+    }
+
+    void dscmonster_InitEffect(){
+        eftic = 1;
+        a.DamageMultiply *= dsc_static.returnCVarFloat('dsc_monsterDamageMultiply');
+        a.DamageFactor *= dsc_static.returnCVarFloat('dsc_monsterDamageFactor');
+        a.Health = int(a.Health * dsc_static.returnCVarFloat('dsc_monsterHealthMultiply'));
+        //console.printf("%s: %2.2f|%2.2f|%d", a.GetClassName(), a.DamageMultiply, a.DamageFactor, a.Health);
+    }
+
+    void dscmonster_TickEffect(){
+        if(a && a.health < 1 || a.tics <= 0) { return; }
+        if (prevState != a.curState)
+        { 
+            a.A_SetTics (int(a.tics * 1.0/dsc_static.returnCVarFloat('dsc_monsterSpeedFactor'))); 
+        }
+        prevState = a.curState;
     }
 }

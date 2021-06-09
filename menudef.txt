@@ -10,16 +10,19 @@ OptionMenu "dsc_MonstersMenu"
     StaticText "ALL CHANGES WILL TAKE EFFECT ON NEXT MAP", gold
 	StaticText " "
 
-    Slider "Health Multiplier", "dsc_HealthMultiply", 1, 10.0, 1
+    Slider "Health Multiplier", "dsc_monsterHealthMultiply", 0.1, 5.0, 0.05, 2
     StaticText  "The health a monster start with", gold
     StaticText  "is moltiplied by the specified value.", gold
     StaticText 	""
-    Slider "Damage dealt on monster", "dsc_DamageFactor", 0.05, 2.0, 0.05, 2
+    Slider "Damage dealt on monster", "dsc_monsterDamageFactor", 0.1, 5.0, 0.05, 2
     StaticText  "The damage inflicted to the monster", gold
     StaticText  "is multiplied by the specified value.", gold
     StaticText  ""
-    Slider "Damage dealt on player", "dsc_DamageMultiply", 0.1, 10.0, 0.1
+    Slider "Damage dealt on player", "dsc_monsterDamageMultiply", 0.1, 5.0, 0.05, 2
     StaticText  "The damage a monster deal from their attack", gold
     StaticText  "is multiplied by the specified value.", gold
+    StaticText  ""
+    Slider "Movement speed factor", "dsc_monsterSpeedFactor", 0.1, 5.0, 0.05, 2
+    StaticText  "Make monsters faster or slower.", gold
     StaticText  ""
 }
