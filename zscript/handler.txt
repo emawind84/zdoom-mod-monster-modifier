@@ -52,7 +52,7 @@ class monster_BaseController : Thinker
         a.DamageMultiply *= dsc_static.returnCVarFloat('dsc_monsterDamageMultiply');
         a.DamageFactor *= dsc_static.returnCVarFloat('dsc_monsterDamageFactor');
         a.Health = int(a.Health * dsc_static.returnCVarFloat('dsc_monsterHealthMultiply'));
-        a.bALWAYSRESPAWN = dsc_static.returnCVar('dsc_monsterAlwaysRespawn')? true : false;
+        a.bALWAYSRESPAWN = a.bALWAYSRESPAWN || dsc_static.returnCVar('dsc_monsterAlwaysRespawn');
         if (dsc_static.returnCVar('dsc_monsterAllBoss')) {
             a.bBOSS = true;
             a.bMISSILEMORE = true;
@@ -62,6 +62,7 @@ class monster_BaseController : Thinker
             a.bQUICKTORETALIATE = true;
             a.bFORCEINFIGHTING = true;
         }
+        //console.printf("%s (ALWAYSRESPAWN: %s)", a.GetClassName(), a.bALWAYSRESPAWN?'true':'false');
         //console.printf("%s: %2.2f|%2.2f|%d", a.GetClassName(), a.DamageMultiply, a.DamageFactor, a.Health);
     }
 
