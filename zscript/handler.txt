@@ -48,19 +48,21 @@ class monster_BaseController : Thinker
     }
 
     void dscmonster_InitEffect(){
-        eftic = 1;
-        a.DamageMultiply *= dsc_static.returnCVarFloat('dsc_monsterDamageMultiply');
-        a.DamageFactor *= dsc_static.returnCVarFloat('dsc_monsterDamageFactor');
-        a.Health = int(a.Health * dsc_static.returnCVarFloat('dsc_monsterHealthMultiply'));
-        a.bALWAYSRESPAWN = a.bALWAYSRESPAWN || dsc_static.returnCVar('dsc_monsterAlwaysRespawn');
-        if (dsc_static.returnCVar('dsc_monsterAllBoss')) {
-            a.bBOSS = true;
-            a.bMISSILEMORE = true;
-            a.bMISSILEEVENMORE = true;
-            a.bNOFEAR = true;
-            a.bALWAYSFAST = true;
-            a.bQUICKTORETALIATE = true;
-            a.bFORCEINFIGHTING = true;
+        if (a) {
+            eftic = 1;
+            a.DamageMultiply *= dsc_static.returnCVarFloat('dsc_monsterDamageMultiply');
+            a.DamageFactor *= dsc_static.returnCVarFloat('dsc_monsterDamageFactor');
+            a.Health = int(a.Health * dsc_static.returnCVarFloat('dsc_monsterHealthMultiply'));
+            a.bALWAYSRESPAWN = a.bALWAYSRESPAWN || dsc_static.returnCVar('dsc_monsterAlwaysRespawn');
+            if (dsc_static.returnCVar('dsc_monsterAllBoss')) {
+                a.bBOSS = true;
+                a.bMISSILEMORE = true;
+                a.bMISSILEEVENMORE = true;
+                a.bNOFEAR = true;
+                a.bALWAYSFAST = true;
+                a.bQUICKTORETALIATE = true;
+                a.bFORCEINFIGHTING = true;
+            }
         }
         //console.printf("%s (ALWAYSRESPAWN: %s)", a.GetClassName(), a.bALWAYSRESPAWN?'true':'false');
         //console.printf("%s: %2.2f|%2.2f|%d", a.GetClassName(), a.DamageMultiply, a.DamageFactor, a.Health);
